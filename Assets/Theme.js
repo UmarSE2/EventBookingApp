@@ -18,6 +18,8 @@ export const FontSize = {
     H3: Dimensions.get('screen').width * 0.07, // 30 ok
     H4: Dimensions.get('screen').width * 0.057, // 24 ok
     H5: Dimensions.get('screen').width * 0.054, // 22 ok
+    H6: Dimensions.get('screen').width * 0.051, // 20 ok
+    H7: Dimensions.get('screen').width * 0.049, // 19 ok
     Title1: Dimensions.get('screen').width * 0.043, // 18 ok
     Title2: Dimensions.get('screen').width * 0.039, // 16 ok
     Title3: Dimensions.get('screen').width * 0.038, // 15 ok

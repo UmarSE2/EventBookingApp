@@ -1,13 +1,21 @@
-import { ScrollView, StyleSheet, Text, Image, TouchableWithoutFeedback, View } from 'react-native'
 import React from 'react'
+import { ScrollView, StyleSheet, Text, Image, TouchableWithoutFeedback, View, Dimensions } from 'react-native'
 import Container from '../Abstracts/Container'
 import Button from '../Abstracts/Button'
 
 import ForwardArrowSm from '../Svgs/ForwardArrowSm'
 import { FontSize } from '../Assets/Theme'
 import LgEventCard from './LgEventCard'
+import Explore from '../Svgs/Explore'
+import Event from '../Svgs/Event'
+import Add from '../Svgs/Add'
+import Map from '../Svgs/Map'
+import Profile from '../Svgs/Profile'
+import BottomCircle from '../Svgs/BottomCircle'
 
-const ExploreBody = () => {
+const { width, height } = Dimensions.get("screen")
+
+const ExploreBody = ({ navigation }) => {
 
     let state = [
         {
@@ -84,92 +92,160 @@ const ExploreBody = () => {
             position: "absolute",
             marginBottom: "19%"
         },
+        bottomBar: {
+            width: '100%',
+            paddingVertical: 5,
+            justifyContent: 'space-evenly',
+        },
+        addbtn: {
+            top: -30,
+        },
     })
 
     return (
-        <ScrollView style={{ flexGrow: 1, marginTop: "10%", zIndex: -1 }} showsVerticalScrollIndicator={false}>
-            <Container>
-                <View style={styles.row}>
-                    <Text style={{ fontSize: FontSize.Title1, color: "black" }}>Upcoming Events</Text>
+        <>
+            <ScrollView style={{ flexGrow: 1, marginTop: "10%", zIndex: -1 }} showsVerticalScrollIndicator={false}>
+                <Container>
+                    <View style={styles.row}>
+                        <Text style={{ fontSize: FontSize.Title1, color: "black" }}>Upcoming Events</Text>
+                        <Button
+                            text={'See All'}
+                            fontSize={FontSize.Body3}
+                            Tailing_icon={ForwardArrowSm}
+                            tailingsize={9}
+                        />
+                    </View>
+                </Container>
+                <View>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        {state.map((data, key) => {
+                            return (
+                                <TouchableWithoutFeedback key={key}>
+                                    <View style={styles.lgCard}>
+                                        <LgEventCard
+                                            title={data.title}
+                                            img={data.img}
+                                            location={data.location}
+                                            bookmark={true}
+                                        />
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            )
+                        })}
+                    </ScrollView>
+                </View>
+                <Container>
+                    <View style={styles.inviteContainer}>
+                        <Image style={styles.image} resizeMode='contain' source={require("../Images/invite.png")} />
+                        <Text style={styles.iniviteText}>Invite your friends</Text>
+                        <Text style={styles.ticketText}>Get $20 for ticket</Text>
+                        <Button
+                            text={'INVITE'}
+                            width={"25%"}
+                            fontSize={FontSize.SubTitle2}
+                            color={'#fff'}
+                            borderRadius={6}
+                            backgroundColor={'#00F8FF'}
+                            style={{ alignSelf: 'flex-start' }}
+                        />
+                    </View>
+                </Container>
+                <View>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        {state.map((data, key) => {
+                            return (
+                                <TouchableWithoutFeedback key={key}>
+                                    <View style={styles.lgCard}>
+                                        <LgEventCard
+                                            title={data.title}
+                                            img={data.img}
+                                            location={data.location}
+                                            bookmark={true}
+                                        />
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            )
+                        })}
+                    </ScrollView>
+                </View>
+                <View>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        {state.map((data, key) => {
+                            return (
+                                <TouchableWithoutFeedback key={key}>
+                                    <View style={styles.lgCard}>
+                                        <LgEventCard
+                                            title={data.title}
+                                            img={data.img}
+                                            location={data.location}
+                                            bookmark={true}
+                                        />
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            )
+                        })}
+                    </ScrollView>
+                </View>
+            </ScrollView>
+            <View style={[styles.row, styles.bottomBar]}>
+                <View>
                     <Button
-                        text={'See All'}
-                        fontSize={FontSize.Body3}
-                        Tailing_icon={ForwardArrowSm}
-                        tailingsize={9}
+                        width={null}
+                        fontSize={15}
+                        btncardname={'Explore'}
+                        TextIcon={Explore}
+                        TextIconSize={22}
+                        color={"#5669FF"}
+                        TextIconColor={"#5669FF"}
                     />
                 </View>
-            </Container>
-            <View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {state.map((data, key) => {
-                        return (
-                            <TouchableWithoutFeedback key={key}>
-                                <View style={styles.lgCard}>
-                                    <LgEventCard
-                                        title={data.title}
-                                        img={data.img}
-                                        location={data.location}
-                                        bookmark={true}
-                                    />
-                                </View>
-                            </TouchableWithoutFeedback>
-                        )
-                    })}
-                </ScrollView>
-            </View>
-            <Container>
-                <View style={styles.inviteContainer}>
-                    <Image style={styles.image} resizeMode='contain' source={require("../Images/invite.png")} />
-                    <Text style={styles.iniviteText}>Invite your friends</Text>
-                    <Text style={styles.ticketText}>Get $20 for ticket</Text>
+                <View>
                     <Button
-                        text={'INVITE'}
-                        width={"25%"}
-                        fontSize={FontSize.SubTitle2}
-                        color={'#fff'}
-                        borderRadius={6}
-                        backgroundColor={'#00F8FF'}
-                        style={{ alignSelf: 'flex-start' }}
+                        width={null}
+                        onPress={() => navigation.navigate('Events')}
+                        btncardname={'Events'}
+                        fontSize={15}
+                        TextIconSize={22}
+                        TextIconColor={'#DADADA'}
+                        TextIcon={Event}
                     />
                 </View>
-            </Container>
-            <View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {state.map((data, key) => {
-                        return (
-                            <TouchableWithoutFeedback key={key}>
-                                <View style={styles.lgCard}>
-                                    <LgEventCard
-                                        title={data.title}
-                                        img={data.img}
-                                        location={data.location}
-                                        bookmark={true}
-                                    />
-                                </View>
-                            </TouchableWithoutFeedback>
-                        )
-                    })}
-                </ScrollView>
+                <View style={styles.addbtn}>
+                    <Button
+                        width={null}
+                        borderRadius={35}
+                        backgroundColor={'#5669FF'}
+                        TextIcon={Add}
+                        TextIconColor={'white'}
+                        paddingHorizontal={9}
+                        paddingVertical={9}
+                        TextIconSize={16}
+                    />
+                </View>
+                <View>
+                    <Button
+                        width={null}
+                        onPress={() => navigation.navigate('Map')}
+                        btncardname={'Map'}
+                        fontSize={15}
+                        TextIcon={Map}
+                        TextIconColor={'#DADADA'}
+                        TextIconSize={22}
+                    />
+                </View>
+                <View>
+                    <Button
+                        width={null}
+                        onPress={() => navigation.navigate('Profile')}
+                        btncardname={'Profile'}
+                        fontSize={15}
+                        TextIcon={Profile}
+                        TextIconColor={'#DADADA'}
+                        TextIconSize={22}
+                    />
+                </View>
             </View>
-            <View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    {state.map((data, key) => {
-                        return (
-                            <TouchableWithoutFeedback key={key}>
-                                <View style={styles.lgCard}>
-                                    <LgEventCard
-                                        title={data.title}
-                                        img={data.img}
-                                        location={data.location}
-                                        bookmark={true}
-                                    />
-                                </View>
-                            </TouchableWithoutFeedback>
-                        )
-                    })}
-                </ScrollView>
-            </View>
-        </ScrollView>
+        </>
     )
 }
 

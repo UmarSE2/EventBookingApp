@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
 import Button from '../Abstracts/Button';
 import Input from '../Abstracts/InputField';
 import { FontSize } from '../Assets/Theme';
+import FilterSheet from './FilterSheet';
 
 import Search from '../Svgs/Search';
 import Filters from '../Svgs/Filter';
@@ -13,9 +14,10 @@ import Basketball from '../Svgs/Basketball';
 import Music from '../Svgs/Music';
 import ForkandKnives from '../Svgs/Fork&knives';
 
-const HomeHead = () => {
+const HomeHead = ({ navigation }) => {
     const btnFontSize = useWindowDimensions().scale * 5 + 6;
     const [value, setValue] = useState('');
+    const refRBSheet = useRef();
 
     let categories = [
         { title: 'Sports', icon: Basketball, color: '#F0635A' },
@@ -113,7 +115,8 @@ const HomeHead = () => {
             <View style={[styles.row, styles.searchbar]}>
                 <Input
                     value={value}
-                    setValue={setValue}
+                    setValue={Value => { navigation.navigate('Search', { value: Value }) }}
+                    onFocus={() => navigation.navigate('Search')}
                     width={'75%'}
                     Leading_icon={Search}
                     leadingsize={FontSize.H4}
@@ -142,6 +145,7 @@ const HomeHead = () => {
                         texticonsize={btnFontSize * 1.5}
                         texticoncolor={'#A29EF0'}
                         paddingHorizontal={btnFontSize / 2.5}
+                        onPress={() => { refRBSheet.current.open() }}
                     />
                 </View>
             </View>
@@ -171,6 +175,8 @@ const HomeHead = () => {
                     </View>
                 </ScrollView>
             </View>
+            <FilterSheet refRBSheet={refRBSheet} />
+
         </View>
     );
 };

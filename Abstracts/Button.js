@@ -13,7 +13,7 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
             flexDirection: "row",
         },
         center: {
-            alignSelf: "center"
+            alignSelf: "center",
         },
         left: {
             alignSelf: "flex-end"
@@ -48,7 +48,7 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
             right: 13,
         },
         texticon: {
-            paddingRight: text ? 3 : 0,
+            // paddingRight: text ? 3 : 0,
         },
         text: {
             color: color ? color : null,
