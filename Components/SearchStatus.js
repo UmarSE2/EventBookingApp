@@ -8,13 +8,18 @@ import BackArrow from '../Svgs/Backward';
 import Search from '../Svgs/Search';
 import Filters from '../Svgs/Filter';
 
-const SearchStatusbar = ({ value, valueChange }) => {
+const SearchStatusbar = ({ value, valueChange, navigation }) => {
     const refRBSheet = useRef();
 
     return (
         <View>
             <View style={[styles.statusbar, styles.row]}>
-                <Button TextIcon={BackArrow} width={null} texticonsize={24} />
+                <Button
+                    TextIcon={BackArrow}
+                    width={null}
+                    texticonsize={24}
+                    onPress={() => navigation.navigate('Explore')}
+                />
                 <Text style={styles.statusbartext}>Search</Text>
             </View>
             <View style={[styles.row, styles.searchbar]}>

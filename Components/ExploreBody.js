@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, Image, TouchableWithoutFeedback, View, Dimensions } from 'react-native'
+import { ScrollView, StyleSheet, Text, Image, TouchableWithoutFeedback, View } from 'react-native'
 import Container from '../Abstracts/Container'
 import Button from '../Abstracts/Button'
 
@@ -11,9 +11,6 @@ import Event from '../Svgs/Event'
 import Add from '../Svgs/Add'
 import Map from '../Svgs/Map'
 import Profile from '../Svgs/Profile'
-import BottomCircle from '../Svgs/BottomCircle'
-
-const { width, height } = Dimensions.get("screen")
 
 const ExploreBody = ({ navigation }) => {
 
@@ -96,6 +93,9 @@ const ExploreBody = ({ navigation }) => {
             width: '100%',
             paddingVertical: 5,
             justifyContent: 'space-evenly',
+            position: "absolute",
+            backgroundColor: "white",
+            bottom: 0
         },
         addbtn: {
             top: -30,
@@ -104,15 +104,18 @@ const ExploreBody = ({ navigation }) => {
 
     return (
         <>
-            <ScrollView style={{ flexGrow: 1, marginTop: "10%", zIndex: -1 }} showsVerticalScrollIndicator={false}>
+            <ScrollView style={{ flexGrow: 1, marginTop: "10%", zIndex: -1, marginBottom: "15%" }} showsVerticalScrollIndicator={false}>
                 <Container>
                     <View style={styles.row}>
                         <Text style={{ fontSize: FontSize.Title1, color: "black" }}>Upcoming Events</Text>
                         <Button
                             text={'See All'}
                             fontSize={FontSize.Body3}
-                            Tailing_icon={ForwardArrowSm}
-                            tailingsize={9}
+                            TailingIcon={ForwardArrowSm}
+                            TailingColor={"grey"}
+                            TailingSize={9}
+                            right={null}
+                            TailingStyle={{ marginLeft: "23%" }}
                         />
                     </View>
                 </Container>
@@ -120,7 +123,7 @@ const ExploreBody = ({ navigation }) => {
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         {state.map((data, key) => {
                             return (
-                                <TouchableWithoutFeedback key={key}>
+                                <TouchableWithoutFeedback key={key} onPress={() => navigation.navigate('Eventdetails')}>
                                     <View style={styles.lgCard}>
                                         <LgEventCard
                                             title={data.title}
@@ -154,7 +157,7 @@ const ExploreBody = ({ navigation }) => {
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         {state.map((data, key) => {
                             return (
-                                <TouchableWithoutFeedback key={key}>
+                                <TouchableWithoutFeedback key={key} onPress={() => navigation.navigate('Eventdetails')}>
                                     <View style={styles.lgCard}>
                                         <LgEventCard
                                             title={data.title}
@@ -172,7 +175,7 @@ const ExploreBody = ({ navigation }) => {
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         {state.map((data, key) => {
                             return (
-                                <TouchableWithoutFeedback key={key}>
+                                <TouchableWithoutFeedback key={key} onPress={() => navigation.navigate('Eventdetails')}>
                                     <View style={styles.lgCard}>
                                         <LgEventCard
                                             title={data.title}

@@ -9,6 +9,7 @@ const InputField = ({ width, height, style, color, elevation,
     fontSize, paddingVertical, paddingHorizontal,
     Leading_icon, leadingcolor, LeadingButton, leadingsize,
     Tailing_icon, tailingsize, TailingButton, tailingcolor,
+    secureTextEntry, autoCapitalize
 }) => {
     const styles = StyleSheet.create({
         row: {
@@ -79,6 +80,8 @@ const InputField = ({ width, height, style, color, elevation,
                 placeholder={placeholder}
                 placeholderTextColor={placeholderTextColor ?? '#000000af'}
                 onChangeText={setValue}
+                secureTextEntry={secureTextEntry}
+                autoCapitalize={autoCapitalize}
             />
             {Tailing_icon !== undefined ? (
                 TailingButton !== undefined ? (

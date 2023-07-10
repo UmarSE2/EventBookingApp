@@ -1,11 +1,11 @@
 import React from 'react'
-import { StatusBar, View } from 'react-native'
+import { SafeAreaView, StatusBar, View } from 'react-native'
 import ExploreHead from '../Components/ExploreHead'
 import ExploreBody from '../Components/ExploreBody'
 
 const Explore = ({ navigation, route }) => {
     return (
-        <View style={{ backgroundColor: '#fff' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
             <StatusBar
                 translucent={true}
                 barStyle={'light-content'}
@@ -13,7 +13,7 @@ const Explore = ({ navigation, route }) => {
             />
             <ExploreHead navigation={navigation} route={route} />
             <ExploreBody navigation={navigation} route={route} />
-        </View>
+        </SafeAreaView>
     )
 }
 

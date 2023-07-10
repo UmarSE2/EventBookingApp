@@ -1,54 +1,22 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView, { Callout, Circle, Marker } from 'react-native-maps';
+import React, { useRef } from 'react';
+import { View, StyleSheet } from 'react-native';
+import MapV from '../Components/MapView';
+import MapHead from '../Components/MapHead';
 
-const Map = () => {
-    const [pin, setPin] = useState({
-        latitude: 31.4220558,
-        longitude: 73.0923253,
-    })
-
+const MapView = ({ navigation, route }) => {
+    const refMarker = useRef();
     return (
-        <View style={{ flex: 1 }}>
-            <MapView style={styles.map}
-                initialRegion={{
-                    latitude: 31.4220558,
-                    longitude: 73.0923253,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                }}>
-                <Marker coordinate={pin}
-                    pinColor="green"
-                    draggable={true}
-                    onDragStart={(e) => {
-                        console.log("Drag Start", e.nativeEvent.coordinate)
-                    }}
-                    onDragEnd={(e) => {
-                        setPin({
-                            latitude: e.nativeEvent.coordinate.latitude,
-                            longitude: e.nativeEvent.coordinate.longitude,
-                        })
-                    }} >
-                    <Callout>
-                        <Text> I am here</Text>
-                    </Callout>
-                </Marker>
-                <Circle center={pin}
-                    radius={1000}>
-                </Circle>
-            </MapView>
+        <View style={styles.container}>
+            <MapV refMarker={refMarker} navigation={navigation} route={route} />
+            <MapHead navigation={navigation} route={route} />
         </View>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    map: {
-        width: '100%',
-        height: '100%',
-    },
 });
 
-export default Map;
+export default MapView;

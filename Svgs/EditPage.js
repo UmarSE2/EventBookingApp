@@ -1,7 +1,7 @@
 import React from 'react';
-import {SvgXml} from 'react-native-svg';
+import { SvgXml } from 'react-native-svg';
 
-const EditPage = ({height, width, color}) => {
+const EditPage = ({ height, width, color }) => {
   const defaultColor = color ? color : 'white';
   const defaultHeight = height ? height : 14;
   const defaultWidth = width ? width : 14;

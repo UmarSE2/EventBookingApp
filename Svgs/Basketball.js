@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-import {SvgXml} from 'react-native-svg';
-const Basketball = ({height, width, color}) => {
+import { SvgXml } from 'react-native-svg';
+const Basketball = ({ height, width, color }) => {
   const defaultColor = color ? color : 'white';
   const defaultHeight = height ? height : 14;
   const defaultWidth = width ? width : 14;
@@ -17,9 +17,7 @@ const Basketball = ({height, width, color}) => {
 <path d="M8.60736 7.79591L9.35972 8.54826L15.2509 2.65705C13.6846 1.26338 11.6213 0.41626 9.35972 0.41626C9.30911 0.41626 9.25875 0.417333 9.20836 0.418165C9.50893 1.1497 9.71965 1.8951 9.83197 2.63474C10.1388 4.65577 9.70476 6.46687 8.60736 7.79591Z" fill=${defaultColor}/>
 <path d="M9.91457 15.7752C10.0303 16.5371 10.2644 17.3085 10.6052 18.0622C12.3752 17.8133 13.9773 17.042 15.2507 15.909L10.8513 11.5095C9.99174 12.6027 9.65952 14.0957 9.91457 15.7752Z" fill=${defaultColor}/>
 <path d="M10.8471 10.0345C12.1761 8.93704 13.9872 8.50299 16.0082 8.80986C16.7479 8.92218 17.4933 9.13294 18.2248 9.43348C18.2257 9.38308 18.2267 9.33272 18.2267 9.28208C18.2267 7.02055 17.3796 4.9572 15.9859 3.39087L10.0947 9.28212L10.8471 10.0345Z" fill=${defaultColor}/>
-</svg>
-
-      `}
+</svg>`}
     />
   );
 };

@@ -36,10 +36,10 @@ const HomeHead = ({ navigation }) => {
             alignSelf: 'center',
         },
         spacing: {
-            marginTop: "8%"
+            marginTop: "13%"
         },
         container: {
-            paddingBottom: btnFontSize * 2.2 - 3,
+            paddingBottom: btnFontSize * 3,
             backgroundColor: '#4A43EC',
             borderBottomStartRadius: 34,
             borderBottomEndRadius: 34,
@@ -108,7 +108,7 @@ const HomeHead = ({ navigation }) => {
                     <Button
                         width={null}
                         TextIcon={ActiveAlarm}
-                        texticonsize={btnFontSize * 1.6 + 8}
+                        TextIconSize={btnFontSize * 1.6 + 8}
                     />
                 </View>
             </View>
@@ -133,18 +133,17 @@ const HomeHead = ({ navigation }) => {
                 />
                 <View style={styles.filterbutton}>
                     <Button
-                        paddingVertical={5}
+                        paddingVertical={4}
                         text={'Filters'}
                         width={null}
                         borderRadius={30}
                         fontSize={btnFontSize / 1.2}
                         color={'#FFFFFFAA'}
                         backgroundColor={'#5D56F3'}
-                        textspacing={btnFontSize / 3}
                         TextIcon={Filters}
-                        texticonsize={btnFontSize * 1.5}
-                        texticoncolor={'#A29EF0'}
-                        paddingHorizontal={btnFontSize / 2.5}
+                        TextIconSize={btnFontSize * 1}
+                        TextIconColor={'#A29EF0'}
+                        paddingHorizontal={btnFontSize / 2}
                         onPress={() => { refRBSheet.current.open() }}
                     />
                 </View>
@@ -164,9 +163,9 @@ const HomeHead = ({ navigation }) => {
                                         backgroundColor={data.color}
                                         fontSize={btnFontSize}
                                         TextIcon={data.icon}
-                                        texticonsize={btnFontSize}
-                                        texticoncolor={'white'}
-                                        textspacing={btnFontSize / 5}
+                                        TextIconSize={btnFontSize}
+                                        TextIconColor={'white'}
+                                        paddingHorizontal={9}
                                         paddingVertical={btnFontSize / 3}
                                     />
                                 </View>

@@ -3,10 +3,10 @@ import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 
 const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
     width, height, elevation, opacity, backgroundColor, justifyContent,
-    borderColor, borderWidth, borderRadius, paddingHorizontal,
-    LeadingColor, LeadingSize, LeadingIcon, letterSpacing,
-    TextIcon, TextIconSize, TextIconColor, paddingVertical,
-    TailingIcon, TailingSize, TailingColor, fontSize, fontWeight
+    borderColor, borderWidth, borderRadius, paddingHorizontal, right,
+    LeadingColor, LeadingSize, LeadingIcon, letterSpacing, btnContainerStyle,
+    TextIcon, TextIconSize, TextIconColor, paddingVertical, TextIconStyle,
+    TailingIcon, TailingSize, TailingColor, fontSize, fontWeight, TailingStyle
 }) => {
     const styles = StyleSheet.create({
         row: {
@@ -45,7 +45,7 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
         },
         tailing: {
             position: 'absolute',
-            right: 13,
+            right: right !== undefined ? right : 13,
         },
         texticon: {
             // paddingRight: text ? 3 : 0,
@@ -60,8 +60,8 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
     })
     return (
         <>
-            <TouchableOpacity style={[styles.center, style]} onPress={onPress}>
-                <View style={[styles.btn, styles.row]}>
+            <TouchableOpacity style={[styles.center, style]} onPress={onPress} activeOpacity={0.8}>
+                <View style={[styles.btn, styles.row, btnContainerStyle]}>
                     {LeadingIcon !== undefined
                         ? (
                             <View style={[styles.center, styles.leading]}>
@@ -75,7 +75,7 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
                         : null}
                     {TextIcon !== undefined
                         ? (
-                            <View style={[styles.btn, styles.texticon]}>
+                            <View style={[styles.btn, styles.texticon, TextIconStyle, { borderWidth: 0 }]}>
                                 <TextIcon
                                     width={TextIconSize}
                                     height={TextIconSize}
@@ -90,7 +90,7 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
                     }
                     {TailingIcon !== undefined
                         ? (
-                            <View style={[styles.center, styles.tailing]}>
+                            <View style={[styles.center, styles.tailing, TailingStyle]}>
                                 <TailingIcon
                                     width={TailingSize}
                                     height={TailingSize}

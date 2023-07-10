@@ -12,12 +12,14 @@ import Mail from '../Svgs/Mail';
 
 const { width, height } = Dimensions.get('window');
 
-const ResetPassword = () => {
+const ResetPassword = ({ navigation }) => {
     const [email, setEmail] = useState("")
 
     return (
         <Container>
-            <StatusBarr leading={<Backward />} />
+            <StatusBarr
+                leading={<Backward
+                />} leadingClick={() => navigation.navigate("SignIn")} />
             <Text style={[styles.heading, styles.color]}>Reset Password</Text>
             <Text style={[styles.emailMsg, styles.color]}>
                 Please enter your email address to request a password reset
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     shadowContainer: {
         alignSelf: "center",
         borderRadius: FontSize.SubTitle2,
-        elevation: 20,
+        elevation: 22,
         shadowColor: Colors.Blue,
         marginTop: "10%"
     },

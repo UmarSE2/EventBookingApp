@@ -1,5 +1,8 @@
 import React, { useState, useRef } from 'react'
-import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Animated } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Animated, Alert } from 'react-native'
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Functions/Firebase";
+
 import Container from '../Abstracts/Container'
 import { Colors, FontSize } from '../Assets/Theme'
 import InputField from '../Abstracts/InputField'
@@ -15,6 +18,21 @@ const SignIn = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isEnabled, setIsEnabled] = useState(false);
+
+    const onHandleLogin = async () => {
+        if (email === '' || password === '') {
+            Alert.alert('Empty Error', 'Input Fields cannot be empty');
+        } else {
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                navigation.navigate('Explore');
+            } catch (error) {
+                Alert.alert('Login error', error.message);
+            }
+        }
+    };
+
+
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     const switchTranslateX = useRef(new Animated.Value(0)).current;
@@ -48,6 +66,7 @@ const SignIn = ({ navigation }) => {
                     borderColor={"#E4DFDF"}
                     Leading_icon={Mail}
                     leadingsize={FontSize.H4}
+                    autoCapitalize='none'
                 />
                 <InputField
                     value={password}
@@ -62,6 +81,7 @@ const SignIn = ({ navigation }) => {
                     Tailing_icon={Eye}
                     tailingsize={FontSize.H4}
                     style={{ marginVertical: "5%" }}
+                    secureTextEntry={true}
                 />
             </View>
             <View style={[styles.row, { justifyContent: "space-between" }]}>
@@ -90,7 +110,7 @@ const SignIn = ({ navigation }) => {
                     paddingVertical={17}
                     letterSpacing={1}
                     borderRadius={16}
-                    onPress={() => navigation.navigate("Home")}
+                    onPress={onHandleLogin}
                 />
             </View>
             <Text style={[styles.center, { marginVertical: "5%" }]}>OR</Text>
@@ -135,7 +155,7 @@ const styles = StyleSheet.create({
     shadowContainer: {
         alignSelf: "center",
         borderRadius: FontSize.SubTitle2,
-        elevation: 21,
+        elevation: 23,
         shadowColor: Colors.Blue,
         marginTop: "10%"
     },

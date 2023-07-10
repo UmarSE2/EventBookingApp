@@ -35,7 +35,7 @@ const EventDetails = ({ navigation }) => {
             marginTop: "10%"
         },
         avatorContainer: {
-            backgroundColor: "red",
+            backgroundColor: "white",
             width: "80%",
             paddingVertical: "3.5%",
             borderRadius: 35,
@@ -62,9 +62,16 @@ const EventDetails = ({ navigation }) => {
             fontSize: FontSize.H2,
             color: 'black',
         },
+        bottombtn: {
+            width: '100%',
+            position: "absolute",
+            bottom: 5,
+            elevation: 23,
+            shadowColor: "white"
+        }
     })
     return (
-        <ScrollView>
+        <>
             {/* <AnimatedStatusBar animated={true} translucent barStyle={barstyle} /> */}
             <Container>
                 <Image style={styles.headImage}
@@ -119,48 +126,50 @@ const EventDetails = ({ navigation }) => {
                         style={{ marginLeft: "15%" }}
                     />
                 </View>
-                <View>
-                    <Text style={styles.title}>International Brand Music Concert</Text>
-                    <EventDetailCard
-                        Icon={Calender}
-                        title={'14 December, 2021'}
-                        subtitle={'Tuesday, 4:00PM-9:00PM'}
-                    />
-                    <EventDetailCard
-                        Icon={SolidLocationShadow}
-                        title={'14 December, 2021'}
-                        subtitle={'Tuesday, 4:00PM-9:00PM'}
-                    />
-                    <EventDetailCard
-                        Icon={Calender}
-                        image_addr={require('../Images/eventDetail.jpg')}
-                        title={'Ashfak Sayem'}
-                        subtitle={'Organizer'}
-                        btntext={'Follow'}
-                        btnPress={() => { }}
-                    />
-                    <EventAbout
-                        description={
-                            'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. '
-                        }
-                    />
-                    <View style={styles.bottombtn}>
-                        <Button
-                            text={'Buy Ticket $120'}
-                            width={"80%"}
-                            color={"white"}
-                            fontSize={FontSize.Button}
-                            backgroundColor={Colors.Blue}
-                            TailingIcon={Forward}
-                            TailingSize={FontSize.H3}
-                            paddingVertical={17}
-                            letterSpacing={1}
-                            borderRadius={16}
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View>
+                        <Text style={styles.title}>International Brand Music Concert</Text>
+                        <EventDetailCard
+                            Icon={Calender}
+                            title={'14 December, 2021'}
+                            subtitle={'Tuesday, 4:00PM-9:00PM'}
+                        />
+                        <EventDetailCard
+                            Icon={SolidLocationShadow}
+                            title={'14 December, 2021'}
+                            subtitle={'Tuesday, 4:00PM-9:00PM'}
+                        />
+                        <EventDetailCard
+                            Icon={Calender}
+                            image_addr={require('../Images/eventDetail.jpg')}
+                            title={'Ashfak Sayem'}
+                            subtitle={'Organizer'}
+                            btntext={'Follow'}
+                            btnPress={() => { }}
+                        />
+                        <EventAbout
+                            description={
+                                'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. '
+                            }
                         />
                     </View>
-                </View>
+                </ScrollView >
             </Container>
-        </ScrollView>
+            <View style={styles.bottombtn}>
+                <Button
+                    text={'Buy Ticket $120'}
+                    width={"70%"}
+                    color={"white"}
+                    fontSize={FontSize.Button}
+                    backgroundColor={Colors.Blue}
+                    TailingIcon={Forward}
+                    TailingSize={FontSize.H3}
+                    paddingVertical={17}
+                    letterSpacing={1}
+                    borderRadius={16}
+                />
+            </View>
+        </>
     )
 }
 

@@ -117,6 +117,7 @@ const FilterSheet = ({ refRBSheet }) => {
                                         <Button
                                             btncardname={category.title}
                                             TextIcon={category.Icon}
+                                            btnContainerStyle={{ justifyContent: "center", alignItems: 'center' }}
                                             TextIconSize={Size * 1.1 + 12}
                                             TextIconColor={category.selected ? '#fff' : '#aaa'}
                                             backgroundColor={category.selected ? '#5669FF' : null}
@@ -125,6 +126,7 @@ const FilterSheet = ({ refRBSheet }) => {
                                             borderWidth={category.selected ? 0 : 1}
                                             borderColor={'#999'}
                                             borderRadius={100}
+                                            paddingHorizontal={10}
                                             fontSize={Size * 1.2}
                                             elevation={category.selected ? 7 : 0}
                                             onPress={() => {

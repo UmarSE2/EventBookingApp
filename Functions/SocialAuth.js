@@ -51,7 +51,7 @@ const SocialAuth = () => {
             const userInfo = await GoogleSignin.signIn();
             console.log('user info', userInfo);
             handleNotification('Signed in from Google', `Welcome, ${userInfo.user.familyName}!`);
-            navigation.navigate('Home');
+            navigation.navigate('Explore');
         } catch (error) { }
     };
 

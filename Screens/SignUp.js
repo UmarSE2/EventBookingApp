@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Alert } from 'react-native'
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../Functions/Firebase";
+
 import Container from '../Abstracts/Container'
 import { Colors, FontSize } from '../Assets/Theme'
 import InputField from '../Abstracts/InputField'
@@ -19,6 +22,17 @@ const SignUp = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+
+    const onHandleSignup = async () => {
+        if (name !== '' && email !== '' && password !== '') {
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                navigation.navigate('SignIn');
+            } catch (error) {
+                Alert.alert('SignUp error', error.message);
+            }
+        }
+    };
 
     return (
         <Container>
@@ -47,6 +61,7 @@ const SignUp = ({ navigation }) => {
                     borderColor={"#E4DFDF"}
                     Leading_icon={Mail}
                     leadingsize={FontSize.H4}
+                    autoCapitalize='none'
                 />
                 <InputField
                     value={password}
@@ -61,6 +76,7 @@ const SignUp = ({ navigation }) => {
                     Tailing_icon={Eye}
                     tailingsize={FontSize.H4}
                     style={{ marginVertical: "5%" }}
+                    secureTextEntry={true}
                 />
                 <InputField
                     value={confirmPassword}
@@ -74,6 +90,7 @@ const SignUp = ({ navigation }) => {
                     leadingsize={FontSize.H4}
                     Tailing_icon={Eye}
                     tailingsize={FontSize.H4}
+                    secureTextEntry={true}
                 />
             </View>
             <View style={styles.shadowContainer}>
@@ -88,7 +105,7 @@ const SignUp = ({ navigation }) => {
                     paddingVertical={17}
                     letterSpacing={1}
                     borderRadius={16}
-                    onPress={() => navigation.navigate("SignIn")}
+                    onPress={onHandleSignup}
                 />
             </View>
             <Text style={[styles.center, { marginVertical: "7%", marginTop: "12%" }]}>OR</Text>
@@ -132,7 +149,7 @@ const styles = StyleSheet.create({
     shadowContainer: {
         alignSelf: "center",
         borderRadius: FontSize.SubTitle2,
-        elevation: 21,
+        elevation: 23,
         shadowColor: Colors.Blue,
         marginTop: "10%"
     },

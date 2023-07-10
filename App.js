@@ -17,33 +17,46 @@ import MyDrawer from './Components/MyDrawer';
 import Eventdetails from './Components/EventDetails';
 import FilterSheet from './Components/FilterSheet';
 import Search from './Screens/Search';
+import OrganizerProfile from './Screens/OrganizerProfile';
+
+const Stack = createNativeStackNavigator();
+const Auth = createNativeStackNavigator();
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
 
   return (
-    <>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName={'Explore'} screenOptions={{ headerShown: false }}>
-          <Stack.Screen name={'Splash'} component={Splash} />
-          <Stack.Screen name={'IntroScreen'} component={IntroScreen} />
-          <Stack.Screen name={'SignIn'} component={SignIn} />
-          <Stack.Screen name={'SignUp'} component={SignUp} />
-          <Stack.Screen name={'Verification'} component={Verification} />
-          <Stack.Screen name={'ResetPassword'} component={ResetPassword} />
-          <Stack.Screen name={'Extra'} component={Extra} />
-          <Stack.Screen name={'Explore'} component={Explore} />
-          <Stack.Screen name={'Events'} component={Events} />
-          <Stack.Screen name={'Map'} component={Map} />
-          <Stack.Screen name={'Profile'} component={Profile} />
-          <Stack.Screen name={'MyDrawer'} component={MyDrawer} />
-          <Stack.Screen name={'Eventdetails'} component={Eventdetails} />
-          <Stack.Screen name={'FilterSheet'} component={FilterSheet} />
-          <Stack.Screen name={'Search'} component={Search} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={'Splash'} screenOptions={{ headerShown: false }}>
+        <Stack.Screen name={'Splash'} component={Splash} />
+        <Stack.Screen name={'IntroScreen'} component={IntroScreen} />
+        <Stack.Screen name={'Auth'} component={AuthFun} />
+        {/* <Stack.Screen name={'SignUp'} component={SignUp} /> */}
+        <Stack.Screen name={'Verification'} component={Verification} />
+        <Stack.Screen name={'ResetPassword'} component={ResetPassword} />
+        <Stack.Screen name={'Extra'} component={Extra} />
+        <Stack.Screen name={'Explore'} component={Explore} />
+        <Stack.Screen name={'Events'} component={Events} />
+        <Stack.Screen name={'Map'} component={Map} />
+        <Stack.Screen name={'Profile'} component={Profile} />
+        <Stack.Screen name={'MyDrawer'} component={MyDrawer} />
+        <Stack.Screen name={'Eventdetails'} component={Eventdetails} />
+        <Stack.Screen name={'FilterSheet'} component={FilterSheet} />
+        <Stack.Screen name={'Search'} component={Search} />
+        <Stack.Screen name={'OrganizerProfile'} component={OrganizerProfile} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
+
+function AuthFun() {
+  return (
+    <Auth.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="SignIn">
+      <Auth.Screen name="SignIn" component={SignIn} />
+      <Auth.Screen name="SignUp" component={SignUp} />
+    </Auth.Navigator>
+  );
+}
 
 export default App;

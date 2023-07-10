@@ -88,6 +88,7 @@ const Search = ({ navigation, route }) => {
                                     date={data.date}
                                     title={data.title}
                                     img={data.img}
+                                    location={data.location}
                                 />
                             </View>
                         </TouchableWithoutFeedback>
