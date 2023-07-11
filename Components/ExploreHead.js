@@ -94,8 +94,10 @@ const HomeHead = ({ navigation }) => {
             <View style={[styles.row, styles.head1]}>
                 <Button
                     TextIcon={MenuBar}
+                    TextIconSize={FontSize.H4}
                     width={FontSize.H4}
                     height={FontSize.H4}
+                    onPress={() => navigation.toggleDrawer()}
                 />
                 <View>
                     <View style={[styles.row]}>

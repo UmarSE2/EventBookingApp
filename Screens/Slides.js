@@ -9,7 +9,7 @@ const Slides = ({ slides, }) => {
     const navigation = useNavigation();
 
     const onDone = () => {
-        navigation.navigate('Auth');
+        navigation.navigate('SignIn');
     };
 
     const renderItem = ({ item }) => {

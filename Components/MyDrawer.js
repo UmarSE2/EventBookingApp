@@ -1,25 +1,28 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import React from 'react';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, } from '@react-navigation/drawer';
-
-import Messege from '../Svgs/Messege';
-import Bookmark from '../Svgs/Bookmark';
-import Mail from '../Svgs/Mail';
-import Setting from '../Svgs/Setting';
-import Question from '../Svgs/Question';
-import SignOut from '../Svgs/SignOut';
-import EmptyProfile from '../Svgs/EmptyProfile';
-import CalenderLight from '../Svgs/CalenderLight';
-import Crown from '../Svgs/Crown';
-
-import Button from '../Abstracts/Button';
+import Explore from '../Screens/Explore';
+import Scale from '../Functions/Scale';
 import { FontSize } from '../Assets/Theme';
+import Button from '../Abstracts/Button';
 
-const Drawer = (props) => {
+import Profile from '../Svgs/ProfileLight';
+import Setting from '../Svgs/Setting';
+import Bookmark from '../Svgs/Bookmark';
+import Question from '../Svgs/Question';
+import Messege from '../Svgs/Messege';
+import SignOut from '../Svgs/SignOut';
+import Email from '../Svgs/Mail';
+import Crown from '../Svgs/Crown';
+import CalenderLight from '../Svgs/CalenderLight';
+
+const profile = Scale(375, 60, 60);
+
+function CustomDrawerContent(props) {
     const btns = [
         {
-            title: 'Profile',
-            Icon: EmptyProfile,
+            title: 'My Profile',
+            Icon: Profile,
             onPress: () => props.navigation.navigate('Profile'),
         },
         {
@@ -39,7 +42,7 @@ const Drawer = (props) => {
         },
         {
             title: 'Contact Us',
-            Icon: Mail,
+            Icon: Email,
             onPress: () => { },
         },
         {
@@ -60,14 +63,18 @@ const Drawer = (props) => {
     ];
 
     return (
-        <View style={{ flex: 1, backgroundColor: "white" }}>
-            <View style={styles.drawerWrapper}>
-                <View style={styles.wrapper1}>
-                    <Image style={styles.drawerImg} resizeMode='contain'
-                        source={{ uri: 'https://cdn.searchenginejournal.com/wp-content/uploads/2022/04/reverse-image-search-627b7e49986b0-sej-760x400.png' }} />
-                    <Text style={styles.drawerTitle}>Ashfak Sayem</Text>
-                </View>
-                <View style={{ marginTop: "-22%", marginBottom: "18%" }}>
+        <DrawerContentScrollView {...props}>
+            <View style={styles.spaceBetween}>
+                <View style={styles.drawerWrapper}>
+                    <View style={styles.wrapper1}>
+                        <Image
+                            style={styles.drawerImg}
+                            source={{
+                                uri: 'https://cdn.searchenginejournal.com/wp-content/uploads/2022/04/reverse-image-search-627b7e49986b0-sej-760x400.png',
+                            }}
+                        />
+                        <Text style={styles.drawerTitle}>Ashfak Sayem</Text>
+                    </View>
                     {btns.map((btn, key) => {
                         return (
                             <View style={styles.btn1} key={key}>
@@ -88,53 +95,91 @@ const Drawer = (props) => {
                         );
                     })}
                 </View>
+                <View style={styles.btnUpgrade}>
+                    <Button
+                        text={'Upgrade Pro'}
+                        TextIcon={Crown}
+                        width={null}
+                        height={null}
+                        color={'#00F8FF'}
+                        fontSize={FontSize.Body3}
+                        backgroundColor={'#deffff'}
+                        paddingVertical={"2.3%"}
+                        paddingHorizontal={"4%"}
+                        fontWeight={"500"}
+                        TextIconSize={20}
+                        borderRadius={7}
+                    />
+                </View>
             </View>
-            <View style={styles.btnUpgrade}>
-                <Button
-                    text={'Upgrade Pro'}
-                    TextIcon={Crown}
-                    width={null}
-                    height={null}
-                    color={'#00F8FF'}
-                    fontSize={FontSize.Body3}
-                    backgroundColor={'#deffff'}
-                    paddingVertical={"1.5%"}
-                    fontWeight={"500"}
-                    TextIconSize={20}
-                    borderRadius={7}
+        </DrawerContentScrollView>
+    );
+}
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+    return (
+        <>
+            <Drawer.Navigator
+                screenOptions={{
+                    headerShown: false,
+                    drawerType: 'slide',
+                    overlayColor: '#0000',
+                    animation: false,
+                }}
+                drawerContent={props => <CustomDrawerContent {...props} />}>
+                <Drawer.Screen
+                    name="Explore"
+                    component={Explore}
+                    screenOptions={{
+                        animation: false,
+                    }}
+                    options={{
+                        drawerItemStyle: {
+                            display: 'none',
+                        },
+                    }}
                 />
-            </View>
-        </View>
-    )
+            </Drawer.Navigator>
+        </>
+    );
 }
 
 const styles = StyleSheet.create({
     drawerWrapper: {
-        marginTop: "10%",
-        width: '100%',
+        width: '80%',
+        paddingLeft: 0,
+        paddingVertical: 10,
     },
     drawerTitle: {
-        fontSize: FontSize.H7,
+        fontSize: 20,
         fontWeight: '500',
         paddingVertical: 10,
         color: "black"
     },
     drawerImg: {
-        width: "17%",
-        height: "27%",
+        width: profile.Width,
+        height: profile.Height,
         borderRadius: 50,
     },
     wrapper1: {
         paddingLeft: 30,
+        marginBottom: "8%"
+    },
+    spaceBetween: {
+        height: Dimensions.get('window').height,
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
     },
     btn1: {
-        width: '60%',
+        width: '100%',
         flexDirection: 'row',
     },
     btnUpgrade: {
-        alignSelf: "flex-start",
-        marginLeft: "7%"
+        marginLeft: "10%",
+        marginBottom: "20%"
     }
-})
+});
 
-export default Drawer;
+export default MyDrawer;

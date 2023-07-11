@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, } from 'react-native';
 import PushNotification from 'react-native-push-notification';
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import Button from '../Abstracts/Button'
 import Google from '../Svgs/Google'
 import Facebook from '../Svgs/Facebook'
@@ -51,7 +51,7 @@ const SocialAuth = () => {
             const userInfo = await GoogleSignin.signIn();
             console.log('user info', userInfo);
             handleNotification('Signed in from Google', `Welcome, ${userInfo.user.familyName}!`);
-            navigation.navigate('Explore');
+            navigation.navigate('MyDrawer');
         } catch (error) { }
     };
 
@@ -67,7 +67,7 @@ const SocialAuth = () => {
                 paddingVertical={15}
                 borderColor={"grey"}
                 borderWidth={1}
-                onPress={signIn}
+                onPress={() => signIn()}
             />
             <Button
                 text={"Login with Facebook"}

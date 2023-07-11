@@ -116,6 +116,7 @@ const ExploreBody = ({ navigation }) => {
                             TailingSize={9}
                             right={null}
                             TailingStyle={{ marginLeft: "23%" }}
+                            onPress={() => navigation.navigate('Events')}
                         />
                     </View>
                 </Container>

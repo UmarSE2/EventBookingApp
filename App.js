@@ -20,7 +20,6 @@ import Search from './Screens/Search';
 import OrganizerProfile from './Screens/OrganizerProfile';
 
 const Stack = createNativeStackNavigator();
-const Auth = createNativeStackNavigator();
 
 const App = () => {
 
@@ -29,8 +28,8 @@ const App = () => {
       <Stack.Navigator initialRouteName={'Splash'} screenOptions={{ headerShown: false }}>
         <Stack.Screen name={'Splash'} component={Splash} />
         <Stack.Screen name={'IntroScreen'} component={IntroScreen} />
-        <Stack.Screen name={'Auth'} component={AuthFun} />
-        {/* <Stack.Screen name={'SignUp'} component={SignUp} /> */}
+        <Stack.Screen name={'SignIn'} component={SignIn} />
+        <Stack.Screen name={'SignUp'} component={SignUp} />
         <Stack.Screen name={'Verification'} component={Verification} />
         <Stack.Screen name={'ResetPassword'} component={ResetPassword} />
         <Stack.Screen name={'Extra'} component={Extra} />
@@ -47,16 +46,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-function AuthFun() {
-  return (
-    <Auth.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="SignIn">
-      <Auth.Screen name="SignIn" component={SignIn} />
-      <Auth.Screen name="SignUp" component={SignUp} />
-    </Auth.Navigator>
-  );
-}
 
 export default App;

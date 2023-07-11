@@ -17,6 +17,7 @@ import StatusBarr from '../Components/StatusBarr'
 const SignIn = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [hidePassword, setHidePassword] = useState(true);
     const [isEnabled, setIsEnabled] = useState(false);
 
     const onHandleLogin = async () => {
@@ -25,13 +26,16 @@ const SignIn = ({ navigation }) => {
         } else {
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                navigation.navigate('Explore');
+                navigation.navigate('MyDrawer');
             } catch (error) {
                 Alert.alert('Login error', error.message);
             }
         }
     };
 
+    const managePasswordVisibility = () => {
+        setHidePassword(!hidePassword);
+    };
 
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -79,9 +83,12 @@ const SignIn = ({ navigation }) => {
                     Leading_icon={Lock}
                     leadingsize={FontSize.H4}
                     Tailing_icon={Eye}
+                    tailingcolor={'black'}
                     tailingsize={FontSize.H4}
                     style={{ marginVertical: "5%" }}
-                    secureTextEntry={true}
+                    secureTextEntry={hidePassword}
+                    TailingButton={Button}
+                    onTailingPress={() => managePasswordVisibility()}
                 />
             </View>
             <View style={[styles.row, { justifyContent: "space-between" }]}>
@@ -163,3 +170,69 @@ const styles = StyleSheet.create({
 
 
 export default SignIn;
+
+// import React, { useState } from 'react';
+// import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+
+// const App = () => {
+//     const [hidePassword, setHidePassword] = useState(true);
+//     const [userPassword, setUserPassword] = useState('');
+
+//     const managePasswordVisibility = () => {
+//         setHidePassword(!hidePassword);
+//     };
+
+//     return (
+//         <View style={[styles.container, { marginTop: 108 }]}>
+//             <TextInput
+//                 style={styles.inputFlex}
+//                 value={userPassword}
+//                 secureTextEntry={hidePassword}
+//                 autoCompleteType="password"
+//                 autoCapitalize="none"
+//                 autoCorrect={false}
+//                 returnKeyType="send"
+//                 onChangeText={(UserPassword) => setUserPassword(UserPassword)}
+//             />
+//             <TouchableOpacity
+//                 activeOpacity={0.8}
+//                 style={styles.visibilityBtn}
+//                 onPress={managePasswordVisibility}
+//             >
+//                 <Image
+//                     source={
+//                         hidePassword
+//                             ? require('../Images/1.jpg')
+//                             : require('../Images/2.jpg')
+//                     }
+//                     style={styles.btnImage}
+//                 />
+//             </TouchableOpacity>
+//         </View>
+//     );
+// };
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         // flexDirection: 'row',
+//         // flexWrap: 'nowrap',
+//     },
+//     inputFlex: {
+//         // alignSelf: 'stretch',
+//         width: '80%',
+//         padding: 0,
+//         backgroundColor: '#ddd',
+//         borderWidth: 2
+//     },
+//     visibilityBtn: {
+//         position: 'absolute',
+//         // right: 9,
+//         height: 5,
+//         width: 15,
+//         padding: 0,
+//         marginTop: 121,
+//     },
+// });
+
+// export default App;

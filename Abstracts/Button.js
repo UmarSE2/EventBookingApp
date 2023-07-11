@@ -36,8 +36,10 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
             justifyContent: justifyContent ?? 'space-evenly',
             borderRadius: borderRadius !== undefined ? borderRadius : 10,
             borderWidth: borderWidth !== undefined ? borderWidth : 0,
-            backgroundColor: backgroundColor !== undefined ? backgroundColor : 'none',
             borderColor: borderColor !== undefined ? borderColor : 'none',
+        },
+        backgroundColor: {
+            backgroundColor: backgroundColor !== undefined ? backgroundColor : 'none',
         },
         leading: {
             position: "absolute",
@@ -61,7 +63,7 @@ const Button = ({ style, onPress, text, paddingLeft, btncardname, color,
     return (
         <>
             <TouchableOpacity style={[styles.center, style]} onPress={onPress} activeOpacity={0.8}>
-                <View style={[styles.btn, styles.row, btnContainerStyle]}>
+                <View style={[styles.btn, styles.row, styles.backgroundColor, btnContainerStyle]}>
                     {LeadingIcon !== undefined
                         ? (
                             <View style={[styles.center, styles.leading]}>

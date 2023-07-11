@@ -127,7 +127,7 @@ const EventDetails = ({ navigation }) => {
                     />
                 </View>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <View>
+                    <View style={{ marginBottom: "7%" }}>
                         <Text style={styles.title}>International Brand Music Concert</Text>
                         <EventDetailCard
                             Icon={Calender}

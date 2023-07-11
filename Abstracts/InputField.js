@@ -9,7 +9,7 @@ const InputField = ({ width, height, style, color, elevation,
     fontSize, paddingVertical, paddingHorizontal,
     Leading_icon, leadingcolor, LeadingButton, leadingsize,
     Tailing_icon, tailingsize, TailingButton, tailingcolor,
-    secureTextEntry, autoCapitalize
+    secureTextEntry, autoCapitalize, onTailingPress
 }) => {
     const styles = StyleSheet.create({
         row: {
@@ -90,6 +90,7 @@ const InputField = ({ width, height, style, color, elevation,
                         TextIcon={Tailing_icon}
                         texticonsize={tailingsize}
                         texticoncolor={tailingcolor}
+                        onPress={onTailingPress}
                     />
                 ) : (
                     <View style={[styles.center, styles.leading]}>
