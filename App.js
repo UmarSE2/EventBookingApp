@@ -18,6 +18,7 @@ import Eventdetails from './Components/EventDetails';
 import FilterSheet from './Components/FilterSheet';
 import Search from './Screens/Search';
 import OrganizerProfile from './Screens/OrganizerProfile';
+import Notifications from './Screens/Notification';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,7 @@ const App = () => {
         <Stack.Screen name={'FilterSheet'} component={FilterSheet} />
         <Stack.Screen name={'Search'} component={Search} />
         <Stack.Screen name={'OrganizerProfile'} component={OrganizerProfile} />
+        <Stack.Screen name={'Notifications'} component={Notifications} />
       </Stack.Navigator>
     </NavigationContainer>
   );

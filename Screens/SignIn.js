@@ -11,6 +11,7 @@ import Lock from '../Svgs/Lock'
 import Eye from '../Svgs/Eye'
 import Button from '../Abstracts/Button'
 import Forward from '../Svgs/Forward'
+import OpenEye from '../Svgs/OpenEye'
 import SocialAuth from '../Functions/SocialAuth'
 import StatusBarr from '../Components/StatusBarr'
 
@@ -82,7 +83,7 @@ const SignIn = ({ navigation }) => {
                     borderColor={"#E4DFDF"}
                     Leading_icon={Lock}
                     leadingsize={FontSize.H4}
-                    Tailing_icon={Eye}
+                    Tailing_icon={hidePassword ? Eye : OpenEye}
                     tailingcolor={'black'}
                     tailingsize={FontSize.H4}
                     style={{ marginVertical: "5%" }}

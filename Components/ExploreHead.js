@@ -111,6 +111,7 @@ const HomeHead = ({ navigation }) => {
                         width={null}
                         TextIcon={ActiveAlarm}
                         TextIconSize={btnFontSize * 1.6 + 8}
+                        onPress={() => navigation.navigate('Notifications')}
                     />
                 </View>
             </View>

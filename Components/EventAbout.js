@@ -4,10 +4,10 @@ import { View, StyleSheet, Text, Dimensions, TouchableWithoutFeedback, } from 'r
 const subtitlefontsize = Dimensions.get('window').width * 0.054;
 const fontsize = Dimensions.get('window').width * 0.04;
 
-const EventAbout = ({ title, description }) => {
+const EventAbout = ({ style, description }) => {
     const [length, setlength] = useState(6);
     return (
-        <View>
+        <View style={style}>
             <Text style={styles.title}>About Event</Text>
             <Text style={styles.description} numberOfLines={length}>
                 {description}

@@ -11,6 +11,7 @@ import Event from '../Svgs/Event'
 import Add from '../Svgs/Add'
 import Map from '../Svgs/Map'
 import Profile from '../Svgs/Profile'
+import EventCard from './EventCard'
 
 const ExploreBody = ({ navigation }) => {
 
@@ -173,16 +174,15 @@ const ExploreBody = ({ navigation }) => {
                     </ScrollView>
                 </View>
                 <View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         {state.map((data, key) => {
                             return (
                                 <TouchableWithoutFeedback key={key} onPress={() => navigation.navigate('Eventdetails')}>
                                     <View style={styles.lgCard}>
-                                        <LgEventCard
+                                        <EventCard
                                             title={data.title}
                                             img={data.img}
                                             location={data.location}
-                                            bookmark={true}
                                         />
                                     </View>
                                 </TouchableWithoutFeedback>

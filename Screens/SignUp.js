@@ -22,6 +22,11 @@ const SignUp = ({ navigation }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [hidePassword, setHidePassword] = useState(true);
+
+    const managePasswordVisibility = () => {
+        setHidePassword(!hidePassword);
+    };
 
     const onHandleSignup = async () => {
         if (name !== '' && email !== '' && password !== '') {
@@ -73,10 +78,12 @@ const SignUp = ({ navigation }) => {
                     borderColor={"#E4DFDF"}
                     Leading_icon={Lock}
                     leadingsize={FontSize.H4}
-                    Tailing_icon={Eye}
+                    Tailing_icon={hidePassword ? Eye : OpenEye}
                     tailingsize={FontSize.H4}
                     style={{ marginVertical: "5%" }}
-                    secureTextEntry={true}
+                    secureTextEntry={hidePassword}
+                    TailingButton={Button}
+                    onTailingPress={() => managePasswordVisibility()}
                 />
                 <InputField
                     value={confirmPassword}
@@ -88,9 +95,11 @@ const SignUp = ({ navigation }) => {
                     borderColor={"#E4DFDF"}
                     Leading_icon={Lock}
                     leadingsize={FontSize.H4}
-                    Tailing_icon={Eye}
+                    Tailing_icon={hidePassword ? Eye : OpenEye}
                     tailingsize={FontSize.H4}
-                    secureTextEntry={true}
+                    secureTextEntry={hidePassword}
+                    TailingButton={Button}
+                    onTailingPress={() => managePasswordVisibility()}
                 />
             </View>
             <View style={styles.shadowContainer}>
